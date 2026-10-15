@@ -1,0 +1,87 @@
+{
+  "change_detection": {
+    "n": 33,
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "tn": 14,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "category_accuracy": 1.0,
+    "failures": []
+  },
+  "relevance": {
+    "n": 44,
+    "positives": 16,
+    "failures": [
+      "false alarm: plymouth_landlord \u00d7 hmo_mandatory \u2192 possible (0.427; Applies in England; Mentions hmo, licensing, multiple occupation; Filed under 'Rented housing sector'; Changes a threshold, rate or fee)"
+    ],
+    "any": {
+      "precision": 0.941,
+      "recall": 1.0,
+      "f1": 0.97
+    },
+    "likely": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "faithfulness": {
+    "faithful_summaries": 25,
+    "false_alarm_rate": 0.0,
+    "false_alarms": [],
+    "hallucination_detection": {
+      "wrong_amount": {
+        "detected": 12,
+        "n": 12,
+        "rate": 1.0
+      },
+      "shifted_date": {
+        "detected": 6,
+        "n": 6,
+        "rate": 1.0
+      },
+      "wrong_period_or_count": {
+        "detected": 3,
+        "n": 3,
+        "rate": 1.0
+      },
+      "advice_added": {
+        "detected": 25,
+        "n": 25,
+        "rate": 1.0
+      },
+      "citation_removed": {
+        "detected": 25,
+        "n": 25,
+        "rate": 1.0
+      },
+      "bogus_citation": {
+        "detected": 25,
+        "n": 25,
+        "rate": 1.0
+      },
+      "invented_claim": {
+        "detected": 25,
+        "n": 25,
+        "rate": 1.0
+      },
+      "quote_altered": {
+        "detected": 25,
+        "n": 25,
+        "rate": 1.0
+      }
+    },
+    "overall_detection_rate": 1.0
+  },
+  "policy": {
+    "advice_detected": "5/5",
+    "advice_false_alarms": "0/4",
+    "refuses_on_ambiguous_possible": true,
+    "no_refusal_on_clear_likely": true,
+    "refuses_on_check_band": true,
+    "labels_consultation_as_proposal": true
+  }
+}

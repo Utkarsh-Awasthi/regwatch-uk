@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}RegWatch UK{% endblock %}</title>
+<style>
+:root{--bg:#f6f7f4;--surface:#fff;--ink:#1b1f1d;--muted:#5d6661;--line:#dfe3dc;--brand:#1d5c4d;--brand-ink:#fff;
+--likely:#1d5c4d;--possible:#8a5a00;--check:#6b4c9a;--note:#f6f1e7;--add:#e6f4ea;--del:#fbe9e7;--code:#eef1ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121513;--surface:#1a1e1c;--ink:#e7ebe8;--muted:#a3ada7;
+--line:#2c332f;--brand:#5fb59d;--brand-ink:#0d1210;--likely:#5fb59d;--possible:#e0b25a;--check:#b99be6;--note:#2a2619;--add:#16301f;--del:#3a1d1a;--code:#232925}}
+:root[data-theme="dark"]{--bg:#121513;--surface:#1a1e1c;--ink:#e7ebe8;--muted:#a3ada7;--line:#2c332f;--brand:#5fb59d;--brand-ink:#0d1210;
+--likely:#5fb59d;--possible:#e0b25a;--check:#b99be6;--note:#2a2619;--add:#16301f;--del:#3a1d1a;--code:#232925}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--brand)}header{background:var(--surface);border-bottom:3px solid var(--brand)}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}header .wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:12px 16px}
+.logo{font-weight:800;font-size:20px;color:var(--brand);text-decoration:none}nav a{margin-right:14px;text-decoration:none;color:var(--muted)}
+main{padding:24px 0 48px}h1{font-size:28px;line-height:1.2;margin:.2em 0 .4em}h2{font-size:20px;margin:1.6em 0 .5em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin:12px 0}
+.muted{color:var(--muted)}.small{font-size:13px}.band{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.band.likely{color:var(--likely)}.band.possible{color:var(--possible)}.band.check{color:var(--check)}
+.note{background:var(--note);padding:8px 10px;border-radius:6px;font-size:14px;margin:8px 0}
+.disclaimer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:32px}
+label{display:block;margin:10px 0 4px;font-weight:600}input[type=text],input[type=email],select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 12px}.checks label{font-weight:400;margin:2px 0}
+button,.btn{background:var(--brand);color:var(--brand-ink);border:0;border-radius:6px;padding:10px 16px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+button.secondary{background:transparent;color:var(--brand);border:1px solid var(--brand)}button.danger{background:#b3261e;color:#fff}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+.cite{font-size:12px;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+.para{padding:8px 10px;border-radius:6px;margin:6px 0;font-size:14px}.para.old{background:var(--del)}.para.new{background:var(--add)}
+.tag{display:inline-block;font-size:12px;background:var(--code);border-radius:4px;padding:1px 6px;margin:2px 4px 2px 0}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px}
+.kpi b{display:block;font-size:24px}
+.ok{color:var(--likely)}.bad{color:#b3261e}
+</style></head><body>
+<header><div class="wrap"><a class="logo" href="/">RegWatch UK</a>
+<nav><a href="/changes">Changes</a><a href="/metrics">Metrics</a><a href="/about">How it works</a></nav></div></header>
+<main class="wrap">{% block body %}{% endblock %}
+<p class="disclaimer">{{ DISCLAIMER }}</p></main></body></html>

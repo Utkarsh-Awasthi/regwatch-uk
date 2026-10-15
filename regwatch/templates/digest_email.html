@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RegWatch UK weekly digest</title></head>
+<body style="margin:0;background:#f4f5f2;font-family:Arial,Helvetica,sans-serif;color:#1b1f1d;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:20px 12px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;background:#ffffff;border:1px solid #dfe2dc;">
+<tr><td style="padding:20px 24px;border-bottom:4px solid #1d5c4d;">
+  <div style="font-size:20px;font-weight:bold;color:#1d5c4d;">RegWatch UK</div>
+  <div style="font-size:14px;color:#555;">Rule changes {{ d.period_start.strftime('%-d %b') }} – {{ d.period_end.strftime('%-d %b %Y') }}
+  {% if d.user.role != 'accountant' %} · for {{ d.owner.describe() }}{% endif %}</div>
+</td></tr>
+{% if d.count == 0 %}
+<tr><td style="padding:24px;font-size:15px;">We didn't find any changes this week that look relevant to your profile. We'll keep watching.</td></tr>
+{% endif %}
+{% for sec in d.sections %}
+  {% if sec.title %}<tr><td style="padding:18px 24px 0;font-size:16px;font-weight:bold;">{{ sec.title }} <span style="font-weight:normal;color:#666;font-size:13px;">{{ sec.profile.describe() }}</span></td></tr>{% endif %}
+  {% for it in sec["items"] %}
+  {% set ch = it.change %}{% set s = it.summary %}
+  <tr><td style="padding:18px 24px;border-bottom:1px solid #eceee9;">
+    <div style="font-size:12px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;color:{{ '#1d5c4d' if it.band=='likely' else ('#8a5a00' if it.band=='possible' else '#6b4c9a') }};">{{ it.policy.label }}</div>
+    <div style="font-size:17px;font-weight:bold;margin:4px 0;">{{ ch.title }}</div>
+    {% if s %}<div style="font-size:15px;margin:6px 0;">{{ s.headline.text }}</div>
+      <ul style="padding-left:18px;margin:6px 0;font-size:14px;line-height:1.45;">
+      {% for c in s.claims %}<li>{{ c.text }} <span style="color:#888;font-size:12px;">[{{ c.citations|join(', ') }}]</span></li>{% endfor %}
+      </ul>{% endif %}
+    {% if ch.deadline %}<div style="font-size:14px;margin:6px 0;"><b>Date in the source:</b> {{ ch.deadline }}</div>{% endif %}
+    {% for n in it.policy.notes %}<div style="font-size:13px;background:#f6f1e7;padding:8px;margin:6px 0;">{{ n }}</div>{% endfor %}
+    <div style="font-size:12px;color:#666;margin:6px 0;">Why you're seeing this: {{ it.reasons|join('; ') }}</div>
+    <div style="font-size:14px;margin-top:8px;">
+      <a href="{{ it.links.source }}" style="color:#1d5c4d;font-weight:bold;">Read the source</a> ·
+      <a href="{{ it.links.detail }}" style="color:#1d5c4d;">See what changed</a>
+    </div>
+    <div style="font-size:12px;margin-top:8px;color:#666;">Was this useful?
+      <a href="{{ it.links.saved_me }}" style="color:#1d5c4d;">This saved me</a> ·
+      <a href="{{ it.links.relevant }}" style="color:#1d5c4d;">Relevant</a> ·
+      <a href="{{ it.links.not_relevant }}" style="color:#1d5c4d;">Not relevant</a> ·
+      <a href="{{ it.links.wrong_summary }}" style="color:#1d5c4d;">Summary was wrong</a></div>
+  </td></tr>
+  {% endfor %}
+{% endfor %}
+<tr><td style="padding:18px 24px;font-size:12px;color:#666;line-height:1.5;">
+  {{ disclaimer }}<br><br>
+  <a href="{{ manage }}" style="color:#666;">Manage your profile, download or delete your data, or unsubscribe</a>
+</td></tr>
+</table></td></tr></table>
+<img src="{{ open_pixel }}" width="1" height="1" alt="" style="display:block;">
+</body></html>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}{% block title %}{{ ch.title }} · RegWatch UK{% endblock %}{% block body %}
+<p class="small"><a href="/changes">← All changes</a></p>
+<h1>{{ ch.title }}</h1>
+<p class="muted">{{ ch.source }} · {{ ch.kind }} · detected {{ ch.detected_at[:10] }} · materiality {{ '%.2f'|format(ch.materiality) }}
+{% if ch.nations %} · applies in {{ ch.nations|join(', ') }}{% endif %} · <a href="{{ ch.url }}">Open source</a></p>
+{% for cat in ch.categories %}<span class="tag">{{ CATS.get(cat, cat) }}</span>{% endfor %}
+{% for n in assessment.notes if n.startswith('This is a proposal') %}<div class="note">{{ n }}</div>{% endfor %}
+{% if ch.summary %}<div class="card">
+  <div class="band possible">Summary · {{ ch.summary_method }}{% if faith %} · faithfulness {{ '%.0f'|format(faith.score*100) }}%{% endif %}</div>
+  <h3 style="margin:6px 0">{{ ch.summary.headline.text }}</h3>
+  <ul>{% for c in ch.summary.claims %}<li>{{ c.text }} {% for k in c.citations %}<a class="cite" href="#{{ k.replace(':','-') }}">[{{ k }}]</a> {% endfor %}</li>{% endfor %}</ul>
+  {% if ch.summary.deadline %}<p><b>Date in the source:</b> {{ ch.summary.deadline.date }} <a class="cite" href="#{{ ch.summary.deadline.citations[0].replace(':','-') if ch.summary.deadline.citations else '' }}">[{{ ch.summary.deadline.citations|join(', ') }}]</a></p>{% endif %}
+  {% if faith %}{% for c in faith.claims if not c.passed %}<div class="note small">Check failed: "{{ c.text }}" ({{ c.problems|join('; ') }})</div>{% endfor %}{% endif %}
+</div>{% endif %}
+{% if ch.report.change_note %}<div class="card"><b>Publisher's change note:</b> {{ ch.report.change_note }}</div>{% endif %}
+<h2>What changed, paragraph by paragraph</h2>
+{% for p in ch.report.paragraphs %}<div class="card">
+  <div class="small muted">{{ p.op }}{% if p.heading %} · {{ p.heading }}{% endif %} · {% for cat in p.categories %}<span class="tag">{{ cat.replace('_',' ') }}</span>{% endfor %} score {{ p.score }}</div>
+  {% if p.old_text %}<div class="para old" id="old-{{ p.old_id }}"><span class="cite">old:{{ p.old_id }}</span> {{ p.old_text }}</div>{% endif %}
+  {% if p.new_text %}<div class="para new" id="new-{{ p.new_id }}"><span class="cite">new:{{ p.new_id }}</span> {{ p.new_text }}</div>{% endif %}
+  {% if p.facts_before or p.facts_after %}<div class="small muted">Facts before: {{ p.facts_before|join(', ') or 'none' }} → after: {{ p.facts_after|join(', ') or 'none' }}</div>{% endif %}
+</div>{% endfor %}
+{% endblock %}

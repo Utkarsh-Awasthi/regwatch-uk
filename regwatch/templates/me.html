@@ -1,0 +1,39 @@
+{% extends "base.html" %}{% block title %}Your RegWatch{% endblock %}{% block body %}
+{% if welcome %}<div class="note">You're signed up. Bookmark this page: it's your private link for managing your profile. Your first digest arrives next week.</div>{% endif %}
+<h1>{% if u.role == 'accountant' %}Your clients' digest{% else %}Your digest preview{% endif %}</h1>
+<p class="muted">{{ profile.describe() }} · last {{ days }} days · <a href="?days=30">last 30 days</a></p>
+{% if d.count == 0 %}<div class="card">No relevant changes in this period.</div>{% endif %}
+{% for sec in d.sections %}{% if sec.title %}<h2>{{ sec.title }} <span class="muted small">{{ sec.profile.describe() }}</span></h2>{% endif %}
+{% for it in sec["items"] %}{% include "_item.html" %}{% endfor %}{% endfor %}
+
+{% if u.role == 'accountant' %}
+<h2>Client profiles</h2>
+<p class="muted small">Client profiles hold no names or contact details. Use your own reference as the label.</p>
+{% for c in clients %}<div class="card"><b>{{ c.label or ('Client ' ~ c.id) }}</b> · {{ c.describe() }}
+<form method="post" action="/me/{{ u.token }}/clients/{{ c.id }}/delete" style="display:inline"><button class="secondary" style="padding:4px 10px;margin-left:8px">Remove</button></form></div>{% endfor %}
+<form class="card" method="post" action="/me/{{ u.token }}/clients">
+  <label>Your reference (e.g. "C-104")</label><input type="text" name="label" maxlength="60">
+  <div class="checks">{% for k, s in SECTORS.items() %}<label><input type="checkbox" name="sectors" value="{{ k }}"> {{ s.label }}</label>{% endfor %}</div>
+  <div class="grid2"><div><label>Nation</label><select name="nation">{% for k, v in NATIONS.items() %}<option value="{{ k }}">{{ v }}</option>{% endfor %}</select></div>
+  <div><label>Council (optional)</label><input type="text" name="local_authority"></div></div>
+  <p><button>Add client profile</button></p>
+</form>
+{% endif %}
+
+<h2>Your profile</h2>
+<form class="card" method="post" action="/me/{{ u.token }}/profile">
+  <div class="checks">{% for k, s in SECTORS.items() %}<label><input type="checkbox" name="sectors" value="{{ k }}" {% if k in sectors_sel %}checked{% endif %}> {{ s.label }}</label>{% endfor %}</div>
+  <div class="grid2"><div><label>Nation</label><select name="nation">{% for k, v in NATIONS.items() %}<option value="{{ k }}" {% if k == u.nation %}selected{% endif %}>{{ v }}</option>{% endfor %}</select></div>
+  <div><label>Council (optional)</label><input type="text" name="local_authority" value="{{ u.local_authority or '' }}"></div></div>
+  <div class="grid2">{% for key, opts in ATTRS.items() %}<div><label>{{ key.replace('_band','').replace('_',' ')|capitalize }}</label>
+    <select name="{{ key }}"><option value="">n/a</option>{% for v in opts %}<option {% if attrs_sel.get(key) == v %}selected{% endif %}>{{ v }}</option>{% endfor %}</select></div>{% endfor %}</div>
+  <p><button>Save profile</button></p>
+</form>
+<h2>Your data</h2>
+<div class="card">
+  <p>We hold your email, the profile answers above, the digests we've sent you and the feedback you've given. Nothing else.</p>
+  <a class="btn" href="/me/{{ u.token }}/export">Download my data (JSON)</a>
+  <form method="post" action="/me/{{ u.token }}/delete" style="display:inline" onsubmit="return confirm('Permanently delete your profile and stop all emails?')">
+    <button class="danger">Delete everything and unsubscribe</button></form>
+</div>
+{% endblock %}

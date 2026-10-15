@@ -1,0 +1,12 @@
+{% set ch = it.change %}{% set s = it.summary %}
+<div class="card">
+  <div class="band {{ it.band }}">{{ it.policy.label }}</div>
+  <h3 style="margin:4px 0">{{ ch.title }}</h3>
+  {% if s %}<div><b>{{ s.headline.text }}</b></div>
+  <ul>{% for c in s.claims %}<li>{{ c.text }} <span class="cite">[{{ c.citations|join(', ') }}]</span></li>{% endfor %}</ul>
+  {% else %}<div class="muted small">Summary pending.</div>{% endif %}
+  {% if ch.deadline %}<div><b>Date in the source:</b> {{ ch.deadline }}</div>{% endif %}
+  {% for n in it.policy.notes %}<div class="note">{{ n }}</div>{% endfor %}
+  <div class="small muted">Why: {{ it.reasons|join('; ') }} · score {{ '%.2f'|format(it.score) }}</div>
+  <div class="small"><a href="{{ it.links.source }}">Read the source</a> · <a href="{{ it.links.detail }}">See what changed</a></div>
+</div>

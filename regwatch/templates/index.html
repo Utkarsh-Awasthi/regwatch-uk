@@ -1,0 +1,30 @@
+{% extends "base.html" %}{% block body %}
+<h1>Plain-English alerts when UK rules change for your business</h1>
+<p>Every night we read GOV.UK and legislation.gov.uk and work out which changes really matter: new thresholds, deadlines and duties, not typo fixes. Once a week we email you the ones that fit your profile. Each one has a short summary, the date it applies from, and a link to the exact paragraph it came from.</p>
+{% if error %}<div class="note bad">{{ error }}</div>{% endif %}
+<form class="card" method="post" action="/signup">
+  <h2 style="margin-top:0">Get your weekly digest</h2>
+  <label>What describes you? (pick all that apply)</label>
+  <div class="checks">{% for k, s in SECTORS.items() %}<label><input type="checkbox" name="sectors" value="{{ k }}"> {{ s.label }}</label>{% endfor %}</div>
+  <div class="grid2">
+    <div><label for="nation">Where do you operate?</label>
+      <select id="nation" name="nation" required>{% for k, v in NATIONS.items() %}<option value="{{ k }}">{{ v }}</option>{% endfor %}</select></div>
+    <div><label for="la">Local council <span class="muted small">(optional, e.g. Plymouth)</span></label>
+      <input id="la" type="text" name="local_authority" maxlength="80"></div>
+  </div>
+  <div class="grid2">
+    <div><label>Properties let</label><select name="properties_band"><option value="">n/a</option>{% for v in ATTRS.properties_band %}<option>{{ v }}</option>{% endfor %}</select></div>
+    <div><label>Employees</label><select name="employees_band"><option value="">n/a</option>{% for v in ATTRS.employees_band %}<option>{{ v }}</option>{% endfor %}</select></div>
+    <div><label>VAT registered?</label><select name="vat_registered"><option value="">n/a</option>{% for v in ATTRS.vat_registered %}<option>{{ v }}</option>{% endfor %}</select></div>
+    <div><label>Any HMOs?</label><select name="hmo"><option value="">n/a</option>{% for v in ATTRS.hmo %}<option>{{ v }}</option>{% endfor %}</select></div>
+  </div>
+  <label for="email">Email</label><input id="email" type="email" name="email" required maxlength="200">
+  <label style="font-weight:400"><input type="checkbox" name="accountant" value="yes"> I'm an accountant or adviser and want to track several clients in one digest</label>
+  <label style="font-weight:400"><input type="checkbox" name="consent" value="yes" required> I agree to RegWatch storing my email and these profile answers to send me a weekly digest. I can download or delete them at any time. We don't ask for your name, postcode or address.</label>
+  <p><button type="submit">Start my digest</button></p>
+</form>
+{% if recent %}<h2>Recently detected changes</h2>
+{% for c in recent %}<div class="card"><a href="/changes/{{ c.id }}"><b>{{ c.title }}</b></a>
+<div class="small muted">{{ c.source }} · {{ c.detected_at[:10] }} · materiality {{ '%.2f'|format(c.materiality) }}</div>
+{% if c.summary %}<div>{{ c.summary.headline.text }}</div>{% endif %}</div>{% endfor %}{% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+RegWatch UK: rule changes {{ d.period_start }} to {{ d.period_end }}
+{% if d.user.role != 'accountant' %}For: {{ d.owner.describe() }}
+{% endif %}
+{% if d.count == 0 %}We didn't find any changes this week that look relevant to your profile.
+{% endif %}
+{% for sec in d.sections %}{% if sec.title %}
+== {{ sec.title }} ({{ sec.profile.describe() }}) ==
+{% endif %}{% for it in sec["items"] %}{% set ch = it.change %}{% set s = it.summary %}
+[{{ it.policy.label }}] {{ ch.title }}
+{% if s %}{{ s.headline.text }}
+{% for c in s.claims %}  - {{ c.text }} [{{ c.citations|join(', ') }}]
+{% endfor %}{% endif %}{% if ch.deadline %}Date in the source: {{ ch.deadline }}
+{% endif %}{% for n in it.policy.notes %}Note: {{ n }}
+{% endfor %}Why: {{ it.reasons|join('; ') }}
+Source: {{ it.links.source }}
+What changed: {{ it.links.detail }}
+This saved me: {{ it.links.saved_me }} | Not relevant: {{ it.links.not_relevant }}
+{% endfor %}{% endfor %}
+--
+{{ disclaimer }}
+Manage or delete your data: {{ manage }}

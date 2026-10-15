@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block body %}
+<h1>{{ msg }}</h1>
+<form class="card" method="post" action="/f/{{ token }}">
+  <label for="note">{% if kind == 'saved_me' %}Tell us what happened. What would you have missed? (optional){% elif kind == 'wrong_summary' %}What was wrong? (optional){% else %}Anything else? (optional){% endif %}</label>
+  <textarea id="note" name="note" rows="4" maxlength="500"></textarea>
+  <p><button>Send</button></p>
+</form>
+{% endblock %}

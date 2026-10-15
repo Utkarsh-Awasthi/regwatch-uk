@@ -1,0 +1,12 @@
+{
+  "_comment": "Key Acts and regulations whose consolidated ('latest') text we re-diff nightly. Add more as users' sectors grow.",
+  "legislation": [
+    {"type": "ukpga", "year": "2025", "number": "26", "why": "Renters' Rights Act 2025 (landlords, England)"},
+    {"type": "ukpga", "year": "2004", "number": "34", "why": "Housing Act 2004 (HMO licensing, deposits)"},
+    {"type": "uksi", "year": "2015", "number": "621", "why": "National Minimum Wage Regulations 2015 (employers)"},
+    {"type": "uksi", "year": "2015", "number": "1693", "why": "Smoke and Carbon Monoxide Alarm (England) Regulations 2015 (landlords)"},
+    {"type": "uksi", "year": "2014", "number": "1855", "why": "Food Information Regulations 2014 (food businesses)"},
+    {"type": "uksi", "year": "2019", "number": "1218", "why": "Allergen labelling (Natasha's Law) amendments (food businesses)"},
+    {"type": "ukpga", "year": "2011", "number": "25", "why": "Charities Act 2011 (charities)"}
+  ]
+}

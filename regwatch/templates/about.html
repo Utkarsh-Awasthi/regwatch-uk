@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}How it works · RegWatch UK{% endblock %}{% block body %}
+<h1>How RegWatch works</h1>
+<div class="card"><h3>1. Crawl</h3><p>Every night we use the open GOV.UK Search and Content APIs and the legislation.gov.uk feeds to find guidance and law that changed. We store every version, so we can always show exactly what changed.</p></div>
+<div class="card"><h3>2. Detect what changed in meaning</h3><p>We match up paragraphs between versions and compare the facts and duties in them: amounts, rates, time limits, dates, "must" and "must not", exemptions, penalties, and where the rule applies. Typo fixes and formatting are ignored.</p></div>
+<div class="card"><h3>3. Rank for you</h3><p>Each change is scored against your profile. We check where it applies, the words and topics used for your type of business, and how much it matters. Every item says why you're seeing it.</p></div>
+<div class="card"><h3>4. Summarise, with sources</h3><p>Each sentence in a summary links to the paragraph it came from. Summaries are checked automatically: every number and date must appear in the cited text, and summaries must never give advice. If a summary fails the check, we show the source wording instead.</p></div>
+<h2>What we won't do</h2>
+<ul><li>We don't give legal, tax or financial advice, or tell you what to do.</li>
+<li>We won't tell you "this affects you" when that depends on details we don't hold or on how the law is read. We'll say we can't tell, and suggest who to ask.</li>
+<li>We label consultations and drafts as proposals, not law.</li>
+<li>We don't ask for your name, postcode or address. You can download or delete your data at any time.</li></ul>
+{% endblock %}

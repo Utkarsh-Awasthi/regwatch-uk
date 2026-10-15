@@ -1,0 +1,710 @@
+{
+ "profiles": {
+  "plymouth_landlord": {
+   "sectors": [
+    "landlord"
+   ],
+   "nation": "england",
+   "local_authority": "Plymouth",
+   "attributes": {
+    "properties_band": "2-5",
+    "hmo": "no"
+   }
+  },
+  "cardiff_cafe": {
+   "sectors": [
+    "food_business",
+    "employer"
+   ],
+   "nation": "wales",
+   "attributes": {
+    "employees_band": "1-9",
+    "vat_registered": "yes"
+   }
+  },
+  "glasgow_sole_trader": {
+   "sectors": [
+    "sole_trader"
+   ],
+   "nation": "scotland",
+   "attributes": {
+    "vat_registered": "no"
+   }
+  },
+  "belfast_charity": {
+   "sectors": [
+    "charity",
+    "employer"
+   ],
+   "nation": "northern_ireland",
+   "attributes": {
+    "employees_band": "1-9"
+   }
+  },
+  "leeds_retailer": {
+   "sectors": [
+    "retailer",
+    "limited_company",
+    "employer"
+   ],
+   "nation": "england",
+   "local_authority": "Leeds",
+   "attributes": {
+    "employees_band": "10-49",
+    "vat_registered": "yes"
+   }
+  }
+ },
+ "changes": {
+  "deposit_england": {
+   "title": "Deposit protection schemes and landlords",
+   "nations": [
+    "england"
+   ],
+   "topics": [
+    "Private renting"
+   ],
+   "categories": [
+    "deadline_or_period"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Landlords must protect a tenant's deposit within 14 days."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "selective_plymouth": {
+   "title": "Selective licensing scheme: Plymouth City Council",
+   "nations": [
+    "england"
+   ],
+   "topics": [
+    "Rented housing sector"
+   ],
+   "categories": [
+    "new_obligation"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Plymouth City Council will require all private rented properties in the designated area to be licensed."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "selective_leeds": {
+   "title": "Selective licensing scheme: Leeds City Council",
+   "nations": [
+    "england"
+   ],
+   "topics": [
+    "Rented housing sector"
+   ],
+   "categories": [
+    "new_obligation"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Leeds City Council will require all private rented properties in Harehills to be licensed."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "scot_short_lets": {
+   "title": "Short-term lets licensing in Scotland",
+   "nations": [
+    "scotland"
+   ],
+   "topics": [
+    "Rented housing sector"
+   ],
+   "categories": [
+    "threshold_or_rate"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Hosts must hold a licence; fees must not exceed \u00a3600."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "wales_rent_smart": {
+   "title": "Rent Smart Wales: landlord registration fees",
+   "nations": [
+    "wales"
+   ],
+   "topics": [
+    "Rented housing sector"
+   ],
+   "categories": [
+    "threshold_or_rate"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Landlords in Wales must register; the fee is \u00a345."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "hmo_mandatory": {
+   "title": "Mandatory HMO licensing changes",
+   "nations": [
+    "england"
+   ],
+   "topics": [
+    "Rented housing sector"
+   ],
+   "categories": [
+    "threshold_or_rate"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Houses in multiple occupation with 5 or more people must be licensed; the fee is \u00a31,000."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "allergen_fsa": {
+   "title": "Allergen guidance for food businesses",
+   "nations": [
+    "england",
+    "wales",
+    "northern_ireland"
+   ],
+   "topics": [
+    "Food Standards Agency"
+   ],
+   "categories": [
+    "new_obligation"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Food businesses must provide allergen information in writing for non-prepacked food."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "nlw_rates": {
+   "title": "National Minimum Wage and National Living Wage rates",
+   "nations": [],
+   "topics": [
+    "Pay and contracts"
+   ],
+   "categories": [
+    "threshold_or_rate"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "The National Living Wage is \u00a312.71 an hour from 1 April 2027."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "vat_threshold": {
+   "title": "VAT registration thresholds",
+   "nations": [],
+   "topics": [
+    "VAT"
+   ],
+   "categories": [
+    "threshold_or_rate"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "You must register for VAT if your taxable turnover is more than \u00a395,000."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "mtd_income_tax": {
+   "title": "Making Tax Digital for Income Tax: who needs to sign up",
+   "nations": [],
+   "topics": [
+    "Self Assessment"
+   ],
+   "categories": [
+    "threshold_or_rate",
+    "deadline_or_period"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Sole traders with qualifying income over \u00a330,000 must use Making Tax Digital from April 2027."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "gift_aid": {
+   "title": "Claiming Gift Aid as a charity",
+   "nations": [],
+   "topics": [
+    "Gift Aid",
+    "Charities and social enterprises"
+   ],
+   "categories": [
+    "deadline_or_period"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Charities must make Gift Aid claims within 4 years."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "ni_charity_register": {
+   "title": "Charity Commission for Northern Ireland: annual monitoring return",
+   "nations": [
+    "northern_ireland"
+   ],
+   "topics": [
+    "Charities"
+   ],
+   "categories": [
+    "deadline_or_period"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Registered charities must submit an annual monitoring return within 10 months."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "eng_charity_return": {
+   "title": "Charity Commission annual return 2027",
+   "nations": [
+    "england",
+    "wales"
+   ],
+   "topics": [
+    "Charity Commission"
+   ],
+   "categories": [
+    "deadline_or_period"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Charities in England and Wales must file their annual return within 10 months."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "companies_house_idv": {
+   "title": "Identity verification for company directors",
+   "nations": [],
+   "topics": [
+    "Companies House"
+   ],
+   "categories": [
+    "new_obligation"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Directors must verify their identity with Companies House by the date of their next confirmation statement."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "epr_packaging": {
+   "title": "Extended producer responsibility for packaging: fees",
+   "nations": [],
+   "topics": [
+    "Packaging and waste"
+   ],
+   "categories": [
+    "threshold_or_rate"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Large producers must pay packaging waste fees from October 2027."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "vape_ban": {
+   "title": "Single-use vapes ban",
+   "nations": [
+    "england"
+   ],
+   "topics": [
+    "Trading Standards"
+   ],
+   "categories": [
+    "penalty"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "It is an offence to sell single-use vapes; retailers face a fine."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "goods_vehicle": {
+   "title": "Goods vehicle operator licensing",
+   "nations": [],
+   "topics": [
+    "Driver and Vehicle Standards Agency"
+   ],
+   "categories": [
+    "new_obligation"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Operators must hold a licence for goods vehicles over 3.5 tonnes."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "fishing_quota": {
+   "title": "Sea fishing quotas 2027",
+   "nations": [],
+   "topics": [
+    "Marine Management Organisation"
+   ],
+   "categories": [
+    "threshold_or_rate"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Vessels must report catches daily; quota is 120 tonnes."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "statutory_sick_pay": {
+   "title": "Statutory Sick Pay changes",
+   "nations": [],
+   "topics": [
+    "Employing people"
+   ],
+   "categories": [
+    "new_obligation"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Employers must pay Statutory Sick Pay from the first day of sickness."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "food_hygiene_display_wales": {
+   "title": "Food hygiene rating display in Wales",
+   "nations": [
+    "wales"
+   ],
+   "topics": [
+    "Food Standards Agency"
+   ],
+   "categories": [
+    "new_obligation"
+   ],
+   "materiality": 0.9,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Food businesses in Wales must display their food hygiene rating at entrances."
+     }
+    ],
+    "change_note": null
+   }
+  },
+  "cosmetic_low_mat": {
+   "title": "Renting out your property: guidance",
+   "nations": [
+    "england"
+   ],
+   "topics": [
+    "Private renting"
+   ],
+   "categories": [
+    "wording"
+   ],
+   "materiality": 0.2,
+   "report": {
+    "paragraphs": [
+     {
+      "new_text": "Minor wording change about tenancy agreements."
+     }
+    ],
+    "change_note": null
+   }
+  }
+ },
+ "labels": [
+  [
+   "plymouth_landlord",
+   "deposit_england",
+   1
+  ],
+  [
+   "plymouth_landlord",
+   "selective_plymouth",
+   1
+  ],
+  [
+   "plymouth_landlord",
+   "selective_leeds",
+   0
+  ],
+  [
+   "plymouth_landlord",
+   "scot_short_lets",
+   0
+  ],
+  [
+   "plymouth_landlord",
+   "wales_rent_smart",
+   0
+  ],
+  [
+   "plymouth_landlord",
+   "hmo_mandatory",
+   0
+  ],
+  [
+   "plymouth_landlord",
+   "allergen_fsa",
+   0
+  ],
+  [
+   "plymouth_landlord",
+   "goods_vehicle",
+   0
+  ],
+  [
+   "plymouth_landlord",
+   "cosmetic_low_mat",
+   0
+  ],
+  [
+   "plymouth_landlord",
+   "vat_threshold",
+   0
+  ],
+  [
+   "plymouth_landlord",
+   "fishing_quota",
+   0
+  ],
+  [
+   "cardiff_cafe",
+   "allergen_fsa",
+   1
+  ],
+  [
+   "cardiff_cafe",
+   "nlw_rates",
+   1
+  ],
+  [
+   "cardiff_cafe",
+   "statutory_sick_pay",
+   1
+  ],
+  [
+   "cardiff_cafe",
+   "food_hygiene_display_wales",
+   1
+  ],
+  [
+   "cardiff_cafe",
+   "deposit_england",
+   0
+  ],
+  [
+   "cardiff_cafe",
+   "scot_short_lets",
+   0
+  ],
+  [
+   "cardiff_cafe",
+   "vape_ban",
+   0
+  ],
+  [
+   "cardiff_cafe",
+   "goods_vehicle",
+   0
+  ],
+  [
+   "cardiff_cafe",
+   "gift_aid",
+   0
+  ],
+  [
+   "glasgow_sole_trader",
+   "mtd_income_tax",
+   1
+  ],
+  [
+   "glasgow_sole_trader",
+   "vat_threshold",
+   1
+  ],
+  [
+   "glasgow_sole_trader",
+   "scot_short_lets",
+   0
+  ],
+  [
+   "glasgow_sole_trader",
+   "deposit_england",
+   0
+  ],
+  [
+   "glasgow_sole_trader",
+   "allergen_fsa",
+   0
+  ],
+  [
+   "glasgow_sole_trader",
+   "nlw_rates",
+   0
+  ],
+  [
+   "glasgow_sole_trader",
+   "fishing_quota",
+   0
+  ],
+  [
+   "belfast_charity",
+   "ni_charity_register",
+   1
+  ],
+  [
+   "belfast_charity",
+   "gift_aid",
+   1
+  ],
+  [
+   "belfast_charity",
+   "nlw_rates",
+   1
+  ],
+  [
+   "belfast_charity",
+   "eng_charity_return",
+   0
+  ],
+  [
+   "belfast_charity",
+   "deposit_england",
+   0
+  ],
+  [
+   "belfast_charity",
+   "vape_ban",
+   0
+  ],
+  [
+   "belfast_charity",
+   "mtd_income_tax",
+   0
+  ],
+  [
+   "leeds_retailer",
+   "vape_ban",
+   1
+  ],
+  [
+   "leeds_retailer",
+   "epr_packaging",
+   1
+  ],
+  [
+   "leeds_retailer",
+   "companies_house_idv",
+   1
+  ],
+  [
+   "leeds_retailer",
+   "nlw_rates",
+   1
+  ],
+  [
+   "leeds_retailer",
+   "vat_threshold",
+   1
+  ],
+  [
+   "leeds_retailer",
+   "selective_leeds",
+   0
+  ],
+  [
+   "leeds_retailer",
+   "allergen_fsa",
+   0
+  ],
+  [
+   "leeds_retailer",
+   "scot_short_lets",
+   0
+  ],
+  [
+   "leeds_retailer",
+   "gift_aid",
+   0
+  ],
+  [
+   "leeds_retailer",
+   "fishing_quota",
+   0
+  ]
+ ]
+}

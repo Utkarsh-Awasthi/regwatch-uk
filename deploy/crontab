@@ -1,0 +1,5 @@
+# RegWatch UK schedule (crontab -e). Adjust the path to your checkout.
+# Nightly at 02:30: crawl GOV.UK + legislation.gov.uk, diff, summarise.
+30 2 * * *  cd /opt/regwatch-uk && .venv/bin/python -m regwatch nightly >> data/nightly.log 2>&1
+# Mondays at 07:00: send weekly digests.
+0 7 * * 1   cd /opt/regwatch-uk && .venv/bin/python -m regwatch digest >> data/digest.log 2>&1

@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% block title %}Metrics · RegWatch UK{% endblock %}{% block body %}
+<h1>Impact and quality</h1>
+<p class="muted small">Live from the database at {{ now.strftime('%Y-%m-%d %H:%M UTC') }}. Offline precision and recall are in <code>evals/report.md</code>.</p>
+<h2>Coverage</h2>
+<div class="kpis">
+<div class="kpi"><b>{{ m.documents }}</b>documents tracked</div><div class="kpi"><b>{{ m.versions }}</b>versions stored</div>
+<div class="kpi"><b>{{ m.changes }}</b>changes detected</div><div class="kpi"><b>{{ m.material_changes }}</b>judged material</div>
+<div class="kpi"><b>{{ m.users }}</b>subscribers</div><div class="kpi"><b>{{ m.client_profiles }}</b>accountant client profiles</div></div>
+<h2>Engagement</h2>
+<div class="kpis">
+<div class="kpi"><b>{{ m.digests_sent }}</b>digests sent</div>
+<div class="kpi"><b>{{ '%.0f%%'|format(m.open_rate*100) if m.open_rate is not none else '–' }}</b>open rate</div>
+<div class="kpi"><b>{{ '%.0f%%'|format(m.click_through_rate*100) if m.click_through_rate is not none else '–' }}</b>item click-through</div>
+<div class="kpi"><b>{{ m.saved_me }}</b>"this saved me"</div></div>
+<h2>Alert precision (user-rated)</h2>
+<div class="kpis">
+<div class="kpi"><b>{{ '%.0f%%'|format(m.online_precision*100) if m.online_precision is not none else '–' }}</b>overall ({{ m.rated_items }} rated)</div>
+{% for b, v in m.precision_by_band.items() %}<div class="kpi"><b>{{ '%.0f%%'|format(v*100) if v is not none else '–' }}</b>{{ BANDS[b] }}</div>{% endfor %}</div>
+<h2>Summary quality</h2>
+<div class="kpis">
+<div class="kpi"><b>{{ m.summaries }}</b>summaries</div>
+<div class="kpi"><b>{{ '%.0f%%'|format(m.faithfulness_mean*100) if m.faithfulness_mean is not none else '–' }}</b>mean faithfulness</div>
+<div class="kpi"><b>{{ m.wrong_summary_reports }}</b>"summary was wrong" reports</div>
+<div class="kpi"><b>{% for k, v in m.summary_methods.items() %}{{ v }} {{ k }}<br>{% else %}–{% endfor %}</b>method mix</div></div>
+{% if m.saved_me_stories %}<h2>"This saved me"</h2>{% for s in m.saved_me_stories %}<div class="card"><b>{{ s.title }}</b><div>{{ s.note or '(no note)' }}</div><div class="small muted">{{ s.at[:10] }}</div></div>{% endfor %}{% endif %}
+{% endblock %}
